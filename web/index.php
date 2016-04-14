@@ -43,7 +43,7 @@ $app->get('/mazes/all', function() use($app) {
       'driver' => 'pdo_mysql',
   );
   $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
-  $conn->query("SELECT 101 FROM mazes");
+  echo $conn->query("SELECT 101 FROM mazes");
   return $app['twig']->render('all_mazes.html.twig');
 });
 
