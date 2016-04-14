@@ -1,0 +1,6 @@
+{
+  "name": "The Real Maze Bot",
+  "description": "Web app to display all the randomly generated mazes from the associated twitter app",
+  "repository": "https://github.com/wckaratekid/TheRealMazeBot",
+  "addons": []
+}
