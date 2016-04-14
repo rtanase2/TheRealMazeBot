@@ -33,6 +33,16 @@ $app->get('/', function() use($app) {
 });
 
 $app->get('/mazes/all', function() use($app) {
+  $config = new \Doctrine\DBAL\Configuration();
+//..
+  $connectionParams = array(
+      'dbname' => 'sql3115178',
+      'user' => 'root',
+      'password' => '',
+      'host' => 'sql3.freemysqlhosting.net',
+      'driver' => 'pdo_mysql',
+  );
+  $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
   $conn->query("SELECT 101 FROM mazes");
   return $app['twig']->render('all_mazes.html.twig');
 });
