@@ -15,11 +15,24 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
-// Our web handlers
+// Our web handlers A.K.A. our routes
 
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('home.html.twig');
+});
+
+$app->get('/mazes/all', function() use($app) {
+  return $app['twig']->render('all_mazes.html.twig');
+});
+
+$app->get('/mazes/random', function() use($app) {
+  $vars = array("id" => 1);
+  return $app['twig']->render('maze.html.twig', $vars);
+});
+
+$app->get('/mazes/recent', function() use($app) {
+  $vars = array("id" => 1);
+  return $app['twig']->render('maze.html.twig', $vars);
 });
 
 $app->run();
