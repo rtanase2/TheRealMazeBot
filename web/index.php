@@ -2,17 +2,6 @@
 
 require('../vendor/autoload.php');
 
-$config = new \Doctrine\DBAL\Configuration();
-//..
-$connectionParams = array(
-    'dbname' => 'sql3115178',
-    'user' => 'root',
-    'password' => '',
-    'host' => 'sql3.freemysqlhosting.net',
-    'driver' => 'pdo_mysql',
-);
-$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
-
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -33,27 +22,16 @@ $app->get('/', function() use($app) {
 });
 
 $app->get('/mazes/all', function() use($app) {
-  $config = new \Doctrine\DBAL\Configuration();
-//..
-  $connectionParams = array(
-      'dbname' => 'sql3115178',
-      'user' => 'root',
-      'password' => '',
-      'host' => 'sql3.freemysqlhosting.net',
-      'driver' => 'pdo_mysql',
-  );
-  $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
-  echo $conn->query("SELECT 101 FROM mazes");
   return $app['twig']->render('all_mazes.html.twig');
 });
 
 $app->get('/mazes/random', function() use($app) {
-  $vars = array("id" => 1);
+  $vars = array("id" => 1, "maze_name" => "test random maze");
   return $app['twig']->render('maze.html.twig', $vars);
 });
 
 $app->get('/mazes/recent', function() use($app) {
-  $vars = array("id" => 1);
+  $vars = array("id" => 2, "maze_name" => "test recent maze");
   return $app['twig']->render('maze.html.twig', $vars);
 });
 
